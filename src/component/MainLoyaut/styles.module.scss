@@ -1,0 +1,27 @@
+.cc__wrapper {
+  position: relative;
+}
+.cc__container {
+  margin-top: var(--height-2xl);
+  padding: var(--spacing-2xl);
+}
+
+.name__background {
+  position: fixed;
+  top: 50%;
+  right: -10%;
+  color: var(--background-seconday);
+  font-size: 100px;
+  text-transform: uppercase;
+  transform: rotate(-90deg) translateY(-50%);
+}
+
+.point__background {
+  position: fixed;
+  top: 80%;
+  left: 15%;
+
+  svg {
+    fill: var(--background-seconday);
+  }
+}

@@ -1,0 +1,80 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  height: calc(100vh - var(--height-2xl));
+  padding: var(--spacing-9xl);
+}
+.about_other {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  margin-top: 70px;
+  padding: var(--spacing-9xl);
+}
+
+.about_question {
+  font-size: var(--size-full-max-large-pro-max-plus-version);
+  > span {
+    color: var(--text-secondary);
+  }
+}
+
+.about_question_description_first {
+  margin-top: var(--spacing-5xl);
+  line-height: 28px;
+  //color: var(--text-secondary);
+
+  > span {
+    color: var(--primary);
+  }
+}
+
+.about_question_description_second {
+  margin-top: var(--spacing-2xl);
+  line-height: 28px;
+  //color: var(--text-secondary);
+
+  > span {
+    color: var(--primary);
+  }
+}
+
+.about_benefits_main {
+  margin-bottom: var(--spacing-5xl);
+  font-size: var(--size-11xl);
+  max-width: 80%;
+}
+
+.render_item {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-6xl);
+
+  > h1 {
+    font-size: 300px;
+    color: var(--text-tertiary);
+  }
+}
+
+.render_item_content {
+  margin-left: -50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  > h2 {
+    font-size: var(--size-11xl);
+    margin-bottom: var(--spacing-3xl);
+    color: var(--primary);
+  }
+  > p {
+    max-width: 80%;
+    font-size: var(--size-5xl);
+    font-style: italic;
+  }
+}

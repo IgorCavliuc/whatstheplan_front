@@ -1,0 +1,79 @@
+@use "colors" as *;
+
+html[data-theme="dark"] {
+  --text-primary: rgba(255, 255, 255, 0.9);
+  --text-secondary: rgba(255, 255, 255, 0.6);
+  --text-tertiary: rgba(255, 255, 255, 0.3);
+
+  //background
+  --background-primary: rgba(0, 0, 0, 1);
+  --background-seconday: rgba(255, 255, 255, 0.1);
+  --background-panel: rgba(255, 255, 255, 0.2);
+
+  //box-shadow
+  --primary-box-shadow: 1px 3px 10px rgba(255, 255, 255, 0.2);
+
+  //border
+  --border-primary: rgba(255, 255, 255, 0.9);
+  --border-secondary: rgba(255, 255, 255, 0.6);
+  --border-tertiary: rgba(255, 255, 255, 0.3);
+
+  //primary
+  --primary: rgba(208, 4, 103, 1);
+  //--primaryMedium: rgba(38, 115, 221, 0.3);
+  //--primaryLight: rgba(38, 115, 221, 0.14);
+
+  //status
+  --warning-color: rgb(165, 131, 30);
+  --error-color: rgb(145, 44, 52);
+  --success-color: rgb(90, 143, 87);
+
+  //statusMedium
+  --warning-color-medium: rgb(65, 56, 21);
+  --error-color-medium: rgb(58, 31, 33);
+  --success-color-medium: rgb(42, 58, 42);
+
+  //statusLight
+  --warning-color-light: rgb(43, 39, 22);
+  --error-color-light: rgb(39, 22, 22);
+  --success-color-light: rgb(33, 41, 33);
+}
+
+html[data-theme="light"] {
+  --text-primary: rgba(0, 0, 0, 0.9);
+  --text-secondary: rgba(0, 0, 0, 0.6);
+  --text-tertiary: rgba(0, 0, 0, 0.3);
+
+  //background
+  --background-primary: rgba(255, 255, 255, 1);
+  --background-seconday: rgba(0, 0, 0, 0.1);
+  --background-panel: rgba(255, 255, 255, 0.5);
+
+  //box-shadow
+  --primary-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+  //border
+  --border-primary: rgba(0, 0, 0, 0.9);
+  --border-secondary: rgba(0, 0, 0, 0.6);
+  --border-tertiary: rgba(0, 0, 0, 0.3);
+
+  //primary
+  --primary: rgba(208, 4, 103, 1);
+  //--primaryMedium: #CFE2F9;
+  //--primaryLight: #F5F9FF;
+
+  //status
+  --warning-color: #ffbb00;
+  --error-color: #ee2c4a;
+  --success-color: #44cc77;
+
+  //statusMedium
+  --warning-color-medium: #ffbb00;
+  --error-color-medium: WFFD6D8;
+  --success-color-medium: #D2FOBD;
+
+  //statusLight
+  --warning-color-light: #fffbe4;
+  --error-color-light: #fff4f4;
+  --success-color-light: #edfcf5;
+}

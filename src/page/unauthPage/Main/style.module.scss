@@ -1,0 +1,46 @@
+.creativeConnect {
+  //background: var(primary);
+  margin: var(--spacing-xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid red;
+}
+
+.cc__main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cc__main_wallpaper {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cc__title {
+  max-width: 80%;
+  width: 100%;
+  font-size: var(--size-full-max-large-pro-max-plus-version);
+  font-weight: bold;
+  margin-bottom: var(--spacing-2xl);
+
+  > span {
+    color: var(--primary);
+  }
+}
+
+.cc__description {
+  max-width: 80%;
+  width: 100%;
+  font-size: var(--size-8xl);
+  font-weight: bold;
+  span {
+    font-weight: normal;
+    font-size: var(--size-7xl);
+  }
+}

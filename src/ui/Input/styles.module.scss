@@ -1,0 +1,130 @@
+.agent-ui-input {
+  background: #e7e7e7;
+  display: flex;
+  height: 50px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  position: relative;
+
+  input {
+    border-radius: 5px;
+  }
+}
+.agent-ui-input--not-empty,
+.agent-ui-input--focus {
+  background-color: #fff;
+  border: 1px solid #b3dcf3;
+}
+
+.agent-ui-input--error.agent-ui-input--focus {
+  border-color: #1e72e3;
+}
+
+.agent-ui-input--error.agent-ui-input--focus + .agent-ui-input--error {
+  color: #1e72e3;
+}
+
+.agent-ui-input--gray {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.agent-ui-input input {
+  width: calc(100% - 48px);
+  border: 0;
+  outline: none;
+  padding: 0 15px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #374957;
+  background-color: transparent;
+}
+.verify-code input {
+  text-align: center;
+  margin-left: 10px;
+  letter-spacing: 0.5em;
+}
+
+.agent-ui-input--error {
+  color: #ff5c5c;
+  font-size: 14px;
+  text-align: start;
+
+  & > ul {
+    padding-left: 17px;
+    margin-top: 10px;
+  }
+}
+
+.agent-ui-input input::placeholder {
+  color: rgba(55, 73, 87, 0.5);
+}
+.agent-ui-input {
+  input:disabled {
+    background: #e7e7e7;
+  }
+}
+.agent-ui-input.agent-ui-input--focus {
+  & > input {
+    background-color: #fff;
+  }
+}
+
+.agent-ui-input--active {
+  background-color: #fff;
+  border: 1px solid #b3dcf3;
+  height: 60px;
+
+  & > input {
+    width: 100%;
+    background-color: #f3f7fa;
+  }
+}
+
+.agent-ui-input--unit {
+  min-width: 80px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 17px;
+  color: #374957;
+  border-left: 1px solid #dedede;
+}
+
+.agent-ui-input--error {
+  border-color: rgb(255, 69, 69);
+  text-align: start;
+}
+
+.agent-ui-input--icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  pointer-events: none;
+  cursor: pointer;
+}
+.agent-ui-input--div-ico {
+  cursor: pointer;
+  max-width: 50px;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 0;
+}
+
+.agent-ui-input--wrapper-icon input {
+  padding-right: 60px;
+}
+
+.agent-ui--input-error-full-width
+  .agent-ui-input--wrapper
+  .agent-ui-input--error
+  + .agent-ui-input--error {
+  width: 200%;
+}
+
+//.agent-ui-input--error+.agent-ui-input--error{
+//  width: 200%;
+//}
