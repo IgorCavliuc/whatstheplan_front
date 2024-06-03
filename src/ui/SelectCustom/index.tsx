@@ -19,7 +19,7 @@ interface SelectCustomProps {
   isSearchable?: boolean;
   save?: "value" | "object";
   name?: string;
-  onChange?: (field: string, value: any, shouldValidate?: boolean) => void;
+  onChange?: (value: Option, shouldValidate?: boolean) => void;
   align?: "left" | "right" | "center" | "auto";
 }
 
@@ -137,9 +137,9 @@ export const SelectCustom: React.FC<SelectCustomProps> = ({
 
   const onTagRemove = (e: React.MouseEvent, option: Option) => {
     e.stopPropagation();
-    const newValue = removeOption(option);
-    setSelectedValue(newValue);
-    if (onChange) onChange(name!, newValue);
+    // const newValue = removeOption(option);
+    setSelectedValue(option);
+    if (onChange) onChange(option);
   };
 
   const onItemClick = (option: Option) => {
@@ -155,13 +155,14 @@ export const SelectCustom: React.FC<SelectCustomProps> = ({
     }
 
     setSelectedValue(newValue);
-    if (onChange) onChange(name!, newValue);
+    if (onChange) onChange(option);
   };
 
   const isSelected = (option: Option) => {
     if (isMulti && Array.isArray(selectedValue)) {
       return selectedValue.some((o) => o.value === option.value);
     }
+    console.log("selectedValue", selectedValue);
     if (!selectedValue) {
       return false;
     }

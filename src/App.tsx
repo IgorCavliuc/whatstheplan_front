@@ -1,9 +1,15 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 import { About, Auth, Home, Main, Profile, Support } from "./page";
 import "./language/index";
 import useUserStore from "./zustand/user";
 import { useEffect, useState } from "react";
-import { darkTheme } from "./theme";
+import { themeMode } from "./theme";
 import { getCookie, setCookie } from "./utils";
 import { getUser, refreshToken } from "./service";
 import { BigLoading } from "./component/PageLoading";
@@ -12,7 +18,6 @@ function App() {
   const [loading, setLoading] = useState(true);
   const addUser = useUserStore((state) => state.addUser);
   const user = useUserStore((state) => state.user);
-  const storage = localStorage.getItem("data-theme");
 
   useEffect(() => {
     const lang = localStorage.getItem("lang");
@@ -26,13 +31,11 @@ function App() {
     const userLocal = JSON.parse(String(localStorage.getItem("user")));
     if (userLocal) addUser(userLocal);
 
-    document.documentElement.setAttribute(
-      "data-theme",
-      darkTheme ? "dark" : "light",
-    );
+    document.documentElement.setAttribute("data-theme", themeMode);
 
+    setLoading(false);
     // eslint-disable-next-line
-  }, [storage, darkTheme]);
+  }, [themeMode]);
 
   useEffect(() => {
     const accessTokenCookie = getCookie("access_token");
@@ -54,10 +57,15 @@ function App() {
     const fetchData = async () => {
       try {
         if (accessTokenCookie) {
+          console.log("sdfdsdfsdfd");
           const res = await getUser(accessTokenCookie);
+
+          console.log("res", res);
           addUser(res.userData);
         }
       } catch (error) {
+        console.log("sdfd");
+        // window.location.href = "/";
         console.error("Error fetching user data:", error);
       } finally {
         setLoading(false);
@@ -79,6 +87,7 @@ function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="/" element={<Home />} />
             {/*<Route path="about" element={<About />} />*/}
+            <Route path="*" element={<Navigate to="/" />} />
           </>
         ) : (
           <>
@@ -88,7 +97,7 @@ function App() {
         )}
         <Route path="about" element={<About />} />
         <Route path="support" element={<Support />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        {/*<Route path="*" element={<Navigate to="/" />} />*/}
       </Routes>
     </BrowserRouter>
   );

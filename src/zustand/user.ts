@@ -9,20 +9,22 @@ export type UserType = {
   status?: UserStatus;
   birthday?: string;
   phone?: string;
-  linkedin?: string;
-  instagram?: string;
-  facebook?: string;
   email?: string;
-  password?: string;
-  confirmPassword?: string;
-  photo?: string;
-  wallpaper?: string;
+  country_of_live?: string[] | null;
+  worked_country?: string[] | null;
   people_data: {
     followers_count?: number;
     following_count?: number;
     visitor_count?: number;
   };
-
+  scope: {
+    value?: number;
+    voice?: number;
+  };
+  image: {
+    profile: "";
+    wallpaper: "";
+  };
   contact: {
     phone?: string;
     insta?: string;

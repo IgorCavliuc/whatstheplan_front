@@ -64,25 +64,6 @@
     font-size: var(--size-7xl);
     font-weight: bold;
   }
-  button {
-    height: var(--height-lg);
-    width: 100%;
-    background-color: var(--primary);
-    border: none;
-    border-radius: 4px;
-    font-size: var(--size-2xl);
-    font-weight: bold;
-    cursor: pointer;
-
-    &:hover {
-      opacity: 0.9;
-    }
-
-    &:active {
-      opacity: 0.9;
-      box-shadow: 1px 1px 15px var(--primary);
-    }
-  }
   > p {
     margin-top: var(--spacing-special);
     font-size: var(--size-sm);
@@ -100,5 +81,26 @@
     color: var(--primary);
     text-decoration: underline;
     cursor: pointer;
+  }
+}
+
+.button_submit {
+  height: var(--height-lg);
+  width: 100%;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 4px;
+  font-size: var(--size-2xl);
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    opacity: 0.9;
+    box-shadow: 1px 1px 15px var(--primary);
   }
 }

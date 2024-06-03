@@ -3,19 +3,19 @@ import { ThemeContext } from "../../theme/ThemeContext";
 import styles from "./styles.module.scss";
 
 export const ThemeMode = () => {
-  const { darkTheme, toggleTheme } = useContext(ThemeContext);
-  const storage = localStorage.getItem("data-theme");
+  const { themeMode, toggleTheme } = useContext(ThemeContext);
 
   useEffect(() => {
-    document.documentElement.setAttribute(
-      "data-theme",
-      darkTheme ? "dark" : "light",
-    );
-  }, [storage, darkTheme]);
+    const theme = localStorage.getItem("themeMode");
+    if (!theme) {
+      localStorage.setItem("themeMode", themeMode);
+      document.documentElement.setAttribute("data-theme", themeMode);
+    }
+  }, [themeMode]);
 
   return (
     <div className={styles.button} onClick={toggleTheme}>
-      {darkTheme ? (
+      {themeMode === "dark" ? (
         <span className="material-symbols-rounded">sunny</span>
       ) : (
         <span className="material-symbols-rounded">dark_mode</span>

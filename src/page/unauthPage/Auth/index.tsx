@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
@@ -10,6 +10,7 @@ import { CongratulationLogo } from "../../../assets/congratulationLogo";
 
 export const Auth = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [localUser, setLocalUser] = useState({});
 
   useEffect(() => {
     if (
@@ -33,14 +34,14 @@ export const Auth = () => {
       case "signup":
         return (
           <>
-            <SignUp />
+            <SignUp setLocalUser={setLocalUser} />
             <SignUpLogo />
           </>
         );
       case "congratulation":
         return (
           <>
-            <Congratulation /> <CongratulationLogo />
+            <Congratulation localUser={localUser} /> <CongratulationLogo />
           </>
         );
       default:

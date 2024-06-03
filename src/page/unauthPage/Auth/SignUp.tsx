@@ -1,17 +1,14 @@
-import styles from "./styles.module.scss";
-import { Input, MultiSwitch, SelectCustom } from "../../../ui";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { InputCustom, MultiSwitch, SelectCustom } from "../../../ui/";
+import styles from "./styles.module.scss";
+import { useSearchParams } from "react-router-dom";
 import { signup } from "../../../service";
-import useUserStore from "../../../zustand/user";
 import { BigLoading } from "../../../component/PageLoading";
-import { useState } from "react";
 import { setCookie } from "../../../utils";
 
-export const SignUp = () => {
-  const addUser = useUserStore((state) => state.addUser);
-  const navigate = useNavigate();
+const SignUp = ({ setLocalUser }: any) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const [, setSearchParams] = useSearchParams();
@@ -55,9 +52,9 @@ export const SignUp = () => {
         if (data.access_token) {
           setCookie("access_token", data.access_token);
           setTimeout(() => {
-            navigate("/");
+            setSearchParams({ type: "congratulation" });
             setIsLoading(false);
-            addUser(data.user);
+            setLocalUser(data.user);
           }, 2000);
         }
       } catch (error) {
@@ -90,23 +87,25 @@ export const SignUp = () => {
             { label: "prof", value: "Professional" },
           ]}
           name="userType"
-          onChange={formik.setFieldValue}
+          onChange={(value) => formik.setFieldValue("userType", value)}
         />
         <div className={styles.form_item}>
-          <Input
+          <InputCustom
             value={formik.values.name}
             label="Name *"
             onChange={formik.handleChange}
-            error={formik.touched.name && formik.errors.name}
             onBlur={formik.handleBlur}
+            error={formik.touched.name && Boolean(formik.errors.name)}
+            helperText={formik.touched.name && formik.errors.name}
             name="name"
           />
-          <Input
+          <InputCustom
             value={formik.values.surename}
             label="Surename *"
             onChange={formik.handleChange}
-            error={formik.touched.surename && formik.errors.surename}
             onBlur={formik.handleBlur}
+            error={formik.touched.surename && Boolean(formik.errors.surename)}
+            helperText={formik.touched.surename && formik.errors.surename}
             name="surename"
           />
         </div>
@@ -114,49 +113,58 @@ export const SignUp = () => {
         <SelectCustom
           options={userTypeArray}
           name="profession"
-          onChange={formik.setFieldValue}
+          onChange={(value) => formik.setFieldValue("profession", value)}
           placeHolder={"Profession"}
         />
         <div className={styles.form_item}>
-          <Input
+          <InputCustom
             value={formik.values.email}
             label="Email *"
             onChange={formik.handleChange}
-            error={formik.touched.email && formik.errors.email}
             onBlur={formik.handleBlur}
+            error={formik.touched.email && Boolean(formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
             name="email"
           />
         </div>
         <div className={styles.form_item}>
-          <Input
+          <InputCustom
             value={formik.values.password}
             label="Password *"
             onChange={formik.handleChange}
-            error={formik.touched.password && formik.errors.password}
             onBlur={formik.handleBlur}
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
             name="password"
           />
-          <Input
+          <InputCustom
             value={formik.values.confirmPassword}
             label="Confirm Password *"
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             error={
+              formik.touched.confirmPassword &&
+              Boolean(formik.errors.confirmPassword)
+            }
+            helperText={
               formik.touched.confirmPassword && formik.errors.confirmPassword
             }
-            onBlur={formik.handleBlur}
             name="confirmPassword"
           />
         </div>
-        <Input
+        <InputCustom
           value={formik.values.valid}
           label="Кто проживает на дне океана?"
           onChange={formik.handleChange}
-          error={formik.touched.valid && formik.errors.valid}
           onBlur={formik.handleBlur}
+          error={formik.touched.valid && Boolean(formik.errors.valid)}
+          helperText={formik.touched.valid && formik.errors.valid}
           name="valid"
         />
 
-        <button type="submit">Submit</button>
+        <button type="submit" className={styles.button_submit}>
+          Submit
+        </button>
         <p onClick={() => setSearchParams({ type: "signin" })}>SignIn</p>
       </form>
     </>

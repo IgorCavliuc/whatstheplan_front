@@ -6,6 +6,10 @@ export const setCookie = (name: string, value: string) => {
   document.cookie = name + "=" + (value || "") + expires + "; path=/";
 };
 
+export const removeCookie = (name: string) => {
+  document.cookie = name + "=; Max-Age=-99999999; path=/";
+};
+
 export const getCookie = (name: string) => {
   const nameEQ = name + "=";
   const ca = document.cookie.split(";");

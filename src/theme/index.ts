@@ -40,7 +40,7 @@ export const lightTheme = {
   successLight: "#EDFCF5",
 };
 
-export const darkTheme = {
+export const themeMode = {
   ...dataTheme,
 
   normal: `rgba(255, 255, 255, 0.87)`,

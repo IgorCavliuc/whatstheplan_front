@@ -13,6 +13,7 @@ export const Profile = () => {
     { type: "country", value: "Country/City" },
     { type: "work_country", value: "Workers' country" },
     { type: "profession", value: "Profession" },
+    { type: "email", value: "Email" },
     { type: "phone", value: "Persone phone" },
     { type: "insta", value: "Instagram" },
     { type: "facebook", value: "Facebook" },
@@ -21,18 +22,30 @@ export const Profile = () => {
     { type: "whatsapp", value: "WhatsApp" },
   ];
 
+  console.log(user);
   return (
     <MainLoyaut>
       <div className={styles.profile__header}>
         <div className={styles.short__data}>
-          <div className={styles.profile__wallpaper}>
-            <ImageEmpty />
-            <p>Upload logo</p>
-            <input />{" "}
+          <div className={styles.short__data_head}>
+            <div className={styles.profile__wallpaper}>
+              {user?.image?.wallpaper ? (
+                <img src={user?.image?.wallpaper} />
+              ) : (
+                <>
+                  <ImageEmpty />
+                  <p>Upload logo</p>
+                </>
+              )}
+
+              <input />
+            </div>
             <div className={styles.header}>
               <div className={styles.main_image}>
-                {user?.photo ? (
-                  <img src={user?.photo} alt="profile_logo" />
+                {user?.image?.profile ? (
+                  <div className={styles?.profile_icon}>
+                    <img src={user?.image?.profile} alt="profile_logo" />
+                  </div>
                 ) : (
                   <div className={styles.empty__profile}>
                     <ImageEmpty />
@@ -41,33 +54,38 @@ export const Profile = () => {
                 )}
               </div>
             </div>
-          </div>
-          <div className={styles.small_info}>
-            <div className={styles.main_info}>
-              <p className={styles.name}>{user?.surename + " " + user?.name}</p>
-              <div className={styles.profession}>
-                <DocIcon />
-                <p>{user?.profession?.label}</p>
+            <div className={styles.small_info}>
+              <div className={styles.main_info}>
+                <p className={styles.name}>
+                  {user?.surename + " " + user?.name}
+                </p>
+                <div className={styles.profession}>
+                  <DocIcon />
+                  <p>{user?.profession?.label}</p>
+                </div>
               </div>
+              {user?.scope?.voice && (
+                <div className={styles.raiting}>
+                  <LinearProgress
+                    value={user?.scope?.value ?? 0}
+                    title={`User score — Excellent ( Based on ${user?.scope?.voice} reviews)`}
+                  />
+                </div>
+              )}
             </div>
-            <div className={styles.raiting}>
-              <LinearProgress
-                value={0.67}
-                title={"User score — Excellent ( Based on 49 reviews)"}
-              />
+            <div className={styles.folow}>
+              <p>
+                Followers —{" "}
+                <span>{user?.people_data?.followers_count ?? 0}</span>
+              </p>
+              <p>
+                Following —{" "}
+                <span>{user?.people_data?.following_count ?? 0}</span>
+              </p>
+              <p>
+                Visitors — <span>{user?.people_data?.visitor_count ?? 0}</span>
+              </p>
             </div>
-          </div>
-
-          <div className={styles.folow}>
-            <p>
-              Followers — <span>128</span>
-            </p>
-            <p>
-              Following — <span>65</span>
-            </p>
-            <p>
-              Visitors — <span>65</span>
-            </p>
           </div>
         </div>
         <div className={styles.full__data}>
@@ -82,10 +100,10 @@ export const Profile = () => {
               ))}
             </div>
             <div className={styles.more_detail_data}>
-              <p>Moldova, Chisinau</p>
-              <p>Moldova, Russia, Ukraine</p>
+              <p>{user?.country_of_live?.join(", ") ?? "-"}</p>
+              <p>{user?.worked_country?.join(", ") ?? "-"}</p>
               <p> {user?.profession?.label ?? "-"}</p>
-              <p> {user?.phone ?? "-"}</p>
+              <p> {user?.email ?? "-"}</p>
               <p> {user?.contact?.phone ?? "-"}</p>
               <p> {user?.contact?.insta ?? "-"}</p>
               <p> {user?.contact?.facebook ?? "-"}</p>

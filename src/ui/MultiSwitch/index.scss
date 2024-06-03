@@ -19,6 +19,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   text-transform: uppercase;
+  color: #fff;
 
   &:not(:last-child) {
     border-right: 1px solid var(--border-secondary);
@@ -27,7 +28,7 @@
 
 .switch-option.selected {
   background-color: var(--primary);
-  color: var(--text-primary);
+  //color: var(--background-primary);
 }
 
 .switch-indicator {

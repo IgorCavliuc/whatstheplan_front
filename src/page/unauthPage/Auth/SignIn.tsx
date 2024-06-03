@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import { Input } from "../../../ui";
+import { InputCustom } from "../../../ui";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import useUserStore from "../../../zustand/user";
@@ -31,6 +31,7 @@ export const SignIn = () => {
 
       try {
         const data = await signin(values);
+        console.log("data", data);
         if (data.message && data.message.email) {
           setFieldError("email", data.message.email);
         }
@@ -60,26 +61,30 @@ export const SignIn = () => {
       {isLoading && <BigLoading />}
       <form onSubmit={formik.handleSubmit} className={styles.form}>
         <label>SignIn</label>
-        <Input
+        <InputCustom
           value={formik.values.email}
           label="Email"
           onChange={formik.handleChange}
-          error={formik.errors.email}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
           active={formik.touched.email}
           onBlur={formik.handleBlur}
           name="email"
         />
-        <Input
+        <InputCustom
           value={formik.values.password}
           label="Password"
           onChange={formik.handleChange}
-          error={formik.errors.password}
+          error={formik.touched.password && Boolean(formik.errors.password)}
+          helperText={formik.touched.password && formik.errors.password}
           active={formik.touched.password}
           onBlur={formik.handleBlur}
           name="password"
         />
 
-        <button type="submit">Submit</button>
+        <button type="submit" className={styles.button_submit}>
+          Submit
+        </button>
         <p onClick={() => setSearchParams({ type: "signup" })}>SignUp</p>
       </form>
     </>

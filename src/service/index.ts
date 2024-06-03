@@ -1,4 +1,4 @@
-export const url = "http://localhost:5555/api";
+export const url = "http://91.107.222.18:5555/api";
 
 export const signin = async (data = {}) => {
   const response = await fetch(url + "/auth/signin", {

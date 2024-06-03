@@ -1,0 +1,56 @@
+// Input.module.scss
+.inputContainer {
+  margin-bottom: 16px;
+}
+
+.darkMode {
+  color: rgba(255, 255, 255, 0.9);
+
+  .MuiInputBase-root {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .MuiFormLabel-root {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .MuiOutlinedInput-root {
+    fieldset {
+      border-color: rgba(255, 255, 255, 0.6);
+    }
+
+    &:hover fieldset {
+      border-color: rgba(255, 255, 255, 0.9);
+    }
+
+    &.Mui-focused fieldset {
+      border-color: rgba(255, 255, 255, 0.9);
+    }
+  }
+}
+
+.lightMode {
+  color: rgba(0, 0, 0, 0.9);
+
+  .MuiInputBase-root {
+    color: rgba(0, 0, 0, 0.9);
+  }
+
+  .MuiFormLabel-root {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .MuiOutlinedInput-root {
+    fieldset {
+      border-color: rgba(0, 0, 0, 0.6);
+    }
+
+    &:hover fieldset {
+      border-color: rgba(0, 0, 0, 0.9);
+    }
+
+    &.Mui-focused fieldset {
+      border-color: rgba(0, 0, 0, 0.9);
+    }
+  }
+}

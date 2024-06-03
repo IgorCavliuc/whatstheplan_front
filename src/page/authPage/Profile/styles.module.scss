@@ -13,6 +13,8 @@
 .main_image {
   width: 120px;
   height: 120px;
+  overflow: hidden;
+  object-fit: cover;
   border-radius: 50%;
   background-color: var(--primary);
   display: flex;
@@ -21,6 +23,18 @@
   flex-direction: column;
   border: 6px solid var(--border-tertiary);
   cursor: pointer;
+
+  .profile_icon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 
   .empty__profile {
     display: flex;
@@ -39,8 +53,15 @@
 }
 
 .short__data {
+  position: relative;
   width: 60%;
+  height: 200px;
 }
+
+.short__data_head {
+  height: 100%;
+}
+
 .full__data {
   width: 40%;
   border-radius: 10px;
@@ -65,7 +86,9 @@
 
 .profile__wallpaper {
   width: 100%;
-  height: 145px;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
   background-color: var(--background-seconday);
   border-radius: 8px;
   display: flex;
@@ -75,6 +98,12 @@
   position: relative;
   gap: var(--spacing-md);
   cursor: pointer;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   > svg {
     stroke: var(--text-primary);
   }
@@ -95,10 +124,9 @@
 .header {
   display: flex;
   gap: var(--spacing-3xl);
+  transform: translate(10%, 50%);
   position: absolute;
-  bottom: -50%;
-  transform: translateY(-10%);
-  left: var(--spacing-2xl);
+  bottom: 0;
 }
 
 .small_info {

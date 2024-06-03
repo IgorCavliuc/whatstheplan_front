@@ -1,4 +1,4 @@
-import { Footer, Navigation } from "../index";
+import { Footer, Navigation, Sidebar } from "../index";
 import styles from "./styles.module.scss";
 import useUserStore from "../../zustand/user";
 import React from "react";
@@ -13,17 +13,15 @@ export const MainLoyaut = ({ children, navigation = true }: any) => {
       <div className={styles.point__background}>
         <BgPoint />
       </div>
-      {navigation && <Navigation />}
-      <div
-        style={{
-          width: "100%",
-          minHeight: "calc(100vh - 70px)",
-        }}
-        className={styles.cc__container}
-      >
-        {children}
+
+      <div className={styles.wrapper_body}>
+        {user && <Sidebar />}
+        <div className={styles.cc__container}>
+          <Navigation />
+          <div className={styles.children_wrapper}>{children}</div>
+        </div>
       </div>
-      <Footer />
+      {/*<Footer />*/}
     </div>
   );
 };

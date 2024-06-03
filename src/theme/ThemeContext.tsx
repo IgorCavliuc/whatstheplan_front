@@ -1,12 +1,12 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useCallback } from "react";
 
 interface ContextProps {
-  darkTheme: boolean;
+  themeMode: string;
   toggleTheme: () => void;
 }
 
 export const ThemeContext = createContext<ContextProps>({
-  darkTheme: true,
+  themeMode: "dark",
   toggleTheme: () => {},
 });
 
@@ -15,14 +15,15 @@ interface Props {
 }
 
 const ThemeProvider: React.FC<Props> = ({ children }) => {
-  const [darkTheme, setDarkTheme] = useState<boolean>(
-    window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches,
+  const [themeMode, setThemeMode] = useState(
+    localStorage.getItem("themeMode") || "dark",
   );
 
   useEffect(() => {
     const handleThemeChange = (e: MediaQueryListEvent) => {
-      setDarkTheme(e.matches);
+      const newTheme = e.matches ? "dark" : "light";
+      localStorage.setItem("themeMode", newTheme);
+      setThemeMode(newTheme);
     };
 
     const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
@@ -33,14 +34,20 @@ const ThemeProvider: React.FC<Props> = ({ children }) => {
     };
   }, []);
 
-  const toggleThemeHandler = () => {
-    setDarkTheme((prevState) => !prevState);
-  };
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", themeMode);
+    localStorage.setItem("themeMode", themeMode);
+  }, [themeMode]);
+
+  const toggleThemeHandler = useCallback(() => {
+    const newTheme = themeMode === "dark" ? "light" : "dark";
+    setThemeMode(newTheme);
+  }, [themeMode]);
 
   return (
     <ThemeContext.Provider
       value={{
-        darkTheme: darkTheme,
+        themeMode,
         toggleTheme: toggleThemeHandler,
       }}
     >

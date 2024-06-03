@@ -3,7 +3,7 @@
 }
 .cc__container {
   margin-top: var(--height-2xl);
-  padding: var(--spacing-2xl);
+  width: 100%;
 }
 
 .name__background {
@@ -24,4 +24,12 @@
   svg {
     fill: var(--background-seconday);
   }
+}
+
+.wrapper_body {
+  display: flex;
+}
+
+.children_wrapper {
+  padding: var(--spacing-2xl);
 }
