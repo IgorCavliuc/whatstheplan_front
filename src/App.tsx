@@ -1,10 +1,4 @@
-import {
-  BrowserRouter,
-  Navigate,
-  Route,
-  Routes,
-  useNavigate,
-} from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { About, Auth, Home, Main, Profile, Support } from "./page";
 import "./language/index";
 import useUserStore from "./zustand/user";
@@ -33,7 +27,7 @@ function App() {
 
     document.documentElement.setAttribute("data-theme", themeMode);
 
-    setLoading(false);
+    setTimeout(() => setLoading(false), 500);
     // eslint-disable-next-line
   }, [themeMode]);
 
@@ -49,7 +43,7 @@ function App() {
       } catch (error) {
         console.error("Error fetching user data:", error);
       } finally {
-        setLoading(false);
+        setTimeout(() => setLoading(false), 500);
       }
     };
     refresh();
@@ -68,7 +62,7 @@ function App() {
         // window.location.href = "/";
         console.error("Error fetching user data:", error);
       } finally {
-        setLoading(false);
+        setTimeout(() => setLoading(false), 500);
       }
     };
 

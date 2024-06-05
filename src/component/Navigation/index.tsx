@@ -2,13 +2,13 @@ import { useNavigate } from "react-router-dom";
 import styles from "./style.module.scss";
 import React from "react";
 import useUserStore from "../../zustand/user";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 
 export const Navigation = () => {
   const user = useUserStore((state) => state.user);
   const navigate = useNavigate();
 
-  const { i18n } = useTranslation();
+  // const { i18n } = useTranslation();
 
   const handleNavigation = () => {
     user ? navigate("/profile") : navigate("/auth?type=signin");

@@ -10,7 +10,7 @@
   position: fixed;
   top: 50%;
   right: -10%;
-  color: var(--background-seconday);
+  color: var(--background-panel);
   font-size: 100px;
   text-transform: uppercase;
   transform: rotate(-90deg) translateY(-50%);
@@ -22,7 +22,7 @@
   left: 15%;
 
   svg {
-    fill: var(--background-seconday);
+    fill: var(--background-panel);
   }
 }
 

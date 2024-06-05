@@ -30,7 +30,7 @@ export const Profile = () => {
           <div className={styles.short__data_head}>
             <div className={styles.profile__wallpaper}>
               {user?.image?.wallpaper ? (
-                <img src={user?.image?.wallpaper} />
+                <img src={user?.image?.wallpaper} alt="wallpaper" />
               ) : (
                 <>
                   <ImageEmpty />

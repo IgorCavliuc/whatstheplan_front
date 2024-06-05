@@ -1,4 +1,4 @@
-import { Footer, Navigation, Sidebar } from "../index";
+import { Navigation, Sidebar } from "../index";
 import styles from "./styles.module.scss";
 import useUserStore from "../../zustand/user";
 import React from "react";

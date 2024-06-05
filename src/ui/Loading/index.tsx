@@ -7,10 +7,7 @@ export const Loading = () => {
     <Box>
       <CircularProgress
         sx={{
-          color: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.primary.dark
-              : theme.palette.secondary.dark,
+          color: "rgba(208, 4, 103, 1)",
         }}
         size={60}
         thickness={4}

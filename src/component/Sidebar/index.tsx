@@ -12,11 +12,9 @@ import { SettingsIcon } from "../../assets/SettingsIcon";
 import { PowerOfIcon } from "../../assets/PowerOfIcon";
 import { removeCookie } from "../../utils";
 import { LanguageSwitcher, ThemeMode } from "../../ui";
-import useUserStore from "../../zustand/user";
 
 export const Sidebar = () => {
   const { i18n } = useTranslation();
-  const user = useUserStore((state) => state.user);
 
   const link = [
     {
